@@ -44,10 +44,10 @@ function net = convertToDagNet(stage)
             output = cat(1, a, b, c);
     end
     
-    if strcmp(version('-release'), "2020b")
-        lgraph = functionToLayerGraph(netFunc, input, "GenerateLayer", "placeholder-layer");
-    else
+    if verLessThan('nnet', "14.1")
         lgraph = functionToLayerGraph(netFunc, input);
+    else
+        lgraph = functionToLayerGraph(netFunc, input, "GenerateLayer", "placeholder-layer");
     end
     placeholders = findPlaceholderLayers(lgraph);
     lgraph = removeLayers(lgraph, {placeholders.Name});
