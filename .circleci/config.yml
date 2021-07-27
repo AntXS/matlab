@@ -27,7 +27,7 @@ jobs:
       - codecov/upload:
           file: artifacts/coverage/codeCoverage.xml
           
-  test:
+  start-simulink:
     parameters:
       version:
         description: "MATLAB version"
@@ -42,13 +42,20 @@ jobs:
       - matlab/run-command:
           command: disp('matlab started'); start_simulink; disp('simulink started')
       - matlab/run-command:
-          command: disp('matlab started'); start_simulink; disp('simulink started')
+          command: disp('matlab started (round 2)'); start_simulink; disp('simulink started (round 2)')
 
 
 workflows:
   matrix-tests:
     jobs:
       - test:
+          matrix:
+            parameters:
+              version:
+                - R2020a
+                - R2020b
+                - R2021a
+      - start-simulink:
           matrix:
             parameters:
               version:
