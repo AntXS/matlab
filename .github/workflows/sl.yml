@@ -1,0 +1,39 @@
+name: Start Simuliink
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  start-simulink:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Setup MATLAB
+        uses: matlab-actions/setup-matlab@v0
+
+      # Runs a set of commands using the runners shell
+      - name: Start simulink
+        uses: matlab-actions/run-command@v0
+        with:
+          command: disp('matlab started'); tic; start_simulink; toc, disp('simulink started')
+          
+      - name: Start simulink a second time
+        uses: matlab-actions/run-command@v0
+        with:
+          command: disp('matlab started (round 2)'); tic; start_simulink; toc, disp('simulink started (round 2)')
+          
