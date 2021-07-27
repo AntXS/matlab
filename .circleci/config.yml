@@ -26,6 +26,24 @@ jobs:
           path: artifacts
       - codecov/upload:
           file: artifacts/coverage/codeCoverage.xml
+          
+  test:
+    parameters:
+      version:
+        description: "MATLAB version"
+        default: "R2020b"
+        type: string
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - matlab/install:
+          release: <<parameters.version>>
+      - matlab/run-command:
+          command: disp('matlab started'); start_simulink; disp('simulink started')
+      - matlab/run-command:
+          command: disp('matlab started'); start_simulink; disp('simulink started')
+
 
 workflows:
   matrix-tests:
