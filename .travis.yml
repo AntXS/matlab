@@ -1,4 +1,2 @@
 language: matlab
-script:
-- disp('matlab started'); tic; start_simulink; toc, disp('simulink started')
-- disp('matlab started (round 2)'); tic; start_simulink; toc, disp('simulink started (round 2)')
+script: disp('matlab started'); tic; start_simulink; toc, disp('simulink started')
