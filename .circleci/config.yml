@@ -42,7 +42,7 @@ jobs:
       - matlab/run-command:
           command: disp('matlab started'); tic; start_simulink; toc, disp('simulink started')
       - matlab/run-command:
-          command: disp('matlab started (round 2)'); tic; start_simulink; toc, disp('simulink started (round 2)')
+          command: disp('matlab started (round 2)'); tic; start_simulink; disp('simulink started (round 2)'), toc
 
 
 workflows:
