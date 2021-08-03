@@ -40,7 +40,7 @@ jobs:
       - matlab/install:
           release: <<parameters.version>>
       - matlab/run-command:
-          command: disp('matlab started'); tic; start_simulink; toc, disp('simulink started')
+          command: disp('matlab started'); tic; start_simulink; disp('simulink started'), toc
       - matlab/run-command:
           command: disp('matlab started (round 2)'); tic; start_simulink; disp('simulink started (round 2)'), toc
 
