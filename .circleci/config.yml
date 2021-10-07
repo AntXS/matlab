@@ -21,7 +21,7 @@ jobs:
           code-coverage-cobertura: artifacts/coverage/codeCoverage.xml
           source-folder: code
       - matlab/run-command:
-          command: connector.ensureServiceOn(), matlab.internal.liveeditor.openAndConvert('lscript.mlx', 'artifacts/script_doc.html')
+          command: matlab.internal.liveeditor.openAndConvert('lscript.mlx', 'artifacts/script_doc.html')
       - store_test_results:
           path: artifacts/junit
       - store_artifacts: 
