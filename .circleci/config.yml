@@ -20,6 +20,8 @@ jobs:
           test-results-junit: artifacts/junit/testResults.xml
           code-coverage-cobertura: artifacts/coverage/codeCoverage.xml
           source-folder: code
+      - matlab/run-command:
+          command: matlab.internal.liveeditor.openAndConvert('lscript.mlx', 'artifacts/script_doc.html')
       - store_test_results:
           path: artifacts/junit
       - store_artifacts: 
@@ -43,8 +45,6 @@ jobs:
           command: disp('matlab started'); tic; start_simulink; disp('simulink started'), toc
       - matlab/run-command:
           command: disp('matlab started (round 2)'); tic; start_simulink; disp('simulink started (round 2)'), toc
-      - matlab/run-command:
-          command: matlab.internal.webwindow('http://mathworks.com')
 
 
 workflows:
@@ -64,4 +64,3 @@ workflows:
                 - R2020a
                 - R2020b
                 - R2021a
-                - R2021b
